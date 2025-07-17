@@ -615,9 +615,8 @@ class LSF(object):
             raise ValueError('Only `cubic` or `Akima` interpolation available.')
 
         # define useful quantities
-        wv_min = np.min(wv_array)
-        wv_max = np.max(wv_array)
-        wv0 = 0.5 * (wv_max + wv_min)
+        centre_idx = len(wv_array) // 2
+        wv0 = wv_array[centre_idx]
 
         # interpolate over tabulated LSF values if provided
         if len(self._data.colnames) > 2.:
